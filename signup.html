@@ -1,0 +1,247 @@
+<!--
+    * Start Bootstrap - Resume v7.0.4 (https://startbootstrap.com/theme/resume)
+    * Copyright 2013-2021 Start Bootstrap
+    * Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-resume/blob/master/LICENSE)
+
+    * Bootstrap v4.4.1 / v4.7.0 (https://getbootstrap.com/)
+    * Copyright 2011-2021 The Bootstrap Authors
+    * Copyright 2011-2021 Twitter, Inc.
+    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+-->
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Sistema Multilojas - Cadastro</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" crossorigin="anonymous"></script>
+        <!-- CSS (includes Bootstrap)-->
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" />
+        <link href="css/signup.css" rel="stylesheet" />
+        <!-- JS (includes Bootstrap)-->
+        <script type="text/javascript" src="js/script.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    </head>
+
+
+<div class="container">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Sistema Multilojas</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="../index/index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../index/index.html#planos">Planos</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../login/index.html">Login</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="index.html">Cadastro</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    <div class="row py-5 mt-4 align-items-center">
+        <!-- For Demo Purpose -->
+        <div class="col-md-5 pr-lg-5 mb-5 mb-md-0">
+            <img src="../catalogo/assets/img/logo.png" alt="" class="img-fluid mb-3 d-none d-md-block">
+            <h4 class="font-italic font-weight-bold text-primary mb-0 text-justify">O Sistema Multilojas ajuda o empresário a criar e gerenciar sua loja virtual com rapidez e eficiência.</h4>
+            <p class="font-italic text-muted">Feito Por<a href="https://www.ifpb.edu.br" class="text-muted">
+                <u>Alunos do IFPB</u></a>
+            </p>
+        </div>
+
+        <!-- Registeration Form -->
+        <div class="col-md-7 col-lg-6 ml-auto">
+            <form>
+                <div class="row">
+
+                    <!-- Name -->
+                    <div class="input-group col-lg-12 mb-4">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text bg-white px-4 border-md border-right-0">
+                                <i class="fa fa-user text-muted"></i>
+                            </span>
+                        </div>
+                        <input id="nome" required type="text" name="nome" placeholder="Nome" class="form-control bg-white border-left-0 border-md">
+                        <div class="invalid-feedback"></div>
+                    </div>
+
+                    <!-- Email -->
+                    <div class="input-group col-lg-12 mb-4">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text bg-white px-4 border-md border-right-0">
+                                <i class="fa fa-envelope text-muted"></i>
+                            </span>
+                        </div>
+                        <input id="email" required type="email" name="email" placeholder="E-mail" class="form-control bg-white border-left-0 border-md">
+                        <div class="invalid-feedback"></div>
+                    </div>
+                    
+                    <!-- Senha -->
+                    <div class="input-group col-lg-12 mb-4">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text bg-white px-4 border-md border-right-0">
+                                <i class="fa fa-envelope text-muted"></i>
+                            </span>
+                        </div>
+                        <input id="senha" required type="password" name="senha" minlength="8" placeholder="Senha" class="form-control bg-white border-left-0 border-md">
+                        <div class="invalid-feedback"></div>
+                    </div>
+                    
+                    <!-- Confirmar Senha -->
+                    <div class="input-group col-lg-12 mb-4">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text bg-white px-4 border-md border-right-0">
+                                <i class="fa fa-envelope text-muted"></i>
+                            </span>
+                        </div>
+                        <input id="confirmacao_senha" type="password" name="confirmacao_senha" minlength="8" placeholder="Confirmar Senha" required class="form-control bg-white border-left-0 border-md">
+                        <div class="invalid-feedback"></div>
+                    </div>
+
+                    <!-- File -->
+                    <div class="input-group col-lg-12 mb-4">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text bg-white border-md border-right-0">
+                                <i class="fa fa-envelope text-muted"></i>
+                            </span>
+                        </div>
+                        <input id="image" type="file" name="image" class="form-control bg-white border-left-0 border-md">
+                    </div>
+
+                    <!-- Submit Button -->
+                    <div class="form-group col-lg-12 mx-auto mb-0">
+                        <input class="btn btn-primary btn-block py-2" class="font-weight-bold" type="submit" value="Cadastrar" id="cadastrar" name="cadastrar">
+                    </div>
+
+                    <div class="spinner-border ms-3 d-none" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+
+                    <!-- Divider Text -->
+                    <div class="form-group col-lg-12 mx-auto d-flex align-items-center my-4">
+                        <div class="border-bottom w-100 ml-5"></div>
+                        <span class="px-2 small text-muted font-weight-bold text-muted">OU</span>
+                        <div class="border-bottom w-100 mr-5"></div>
+                    </div>
+
+                    <!-- Social Login -->
+                    <div class="form-group col-lg-12 mx-auto">
+                        <a href="#" class="btn btn-primary btn-block py-2 btn-facebook">
+                            <i class="fa fa-facebook-f mr-2"></i>
+                            <span class="font-weight-bold">Acessar pelo Facebook</span>
+                        </a>
+                        <a href="#" class="btn btn-primary btn-block py-2 btn-twitter">
+                            <i class="fa fa-twitter mr-2"></i>
+                            <span class="font-weight-bold">Acessar pelo Twitter</span>
+                        </a>
+                    </div>
+
+                    <!-- Already Registered -->
+                    <div class="text-center w-100">
+                        <p class="text-muted font-weight-bold">Já Possui Conta? <a href="#" class="text-primary ml-2">Login</a></p>
+                    </div>
+
+                    <div id="#error"></div>
+
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+    const form = document.querySelector('form');
+
+    const emptyErrors = {
+        nome: 'Escolha o nome do usuário.',
+        email: 'Escolha o email do usuário.',
+        senha: 'Escolha a senha do usuário com no mínimo 8 caracteres.',
+        confirmacao_senha: 'Escolha a confirmação de senha do usuário com no mínimo 8 caracteres.',
+    };
+
+    form.onsubmit = (event) => {
+        event.preventDefault();
+
+        document.querySelector('.spinner-border').classList.remove('d-none');
+        
+        const user = new FormData(form);
+
+        const valid = () => {
+            const inputs = document.querySelectorAll('input');
+
+            const valid = Array.from(inputs).every((input) =>
+                input.checkValidity()
+            );
+            return valid;
+        };
+
+        if (valid() && (createUser(user))) {
+            location.href = '/signin.html';
+        }
+
+        form.classList.add('was-validated');
+    };
+
+    async function createUser(user) {
+        const url = '/users';
+
+        const config = {
+        method: 'post',
+        body: user
+        };
+        
+        const newUser = await (await fetch(url, config)).json();
+        
+        return newUser
+    }
+
+    Array.from(document.querySelectorAll('input + .invalid-feedback')).forEach(
+        (element, index) => {
+            element.textContent = Object.values(emptyErrors)[index];
+        }
+    );
+
+    Array.from(document.querySelectorAll('input')).map((input) => {
+      input.addEventListener('input', () => {
+        input.setCustomValidity('');
+
+        if (input.value === '') {
+          const error = emptyErrors[input.name]
+          input.parentNode.querySelector('.invalid-feedback').innerText =
+            error;
+
+          input.setCustomValidity(error);
+        }
+      });
+    });
+
+    form.confirmacao_senha.addEventListener('input', () => {
+      const password = form.senha.value;
+      const confirmation_password = form.confirmacao_senha.value;
+
+      if (password !== confirmation_password) {
+        const error = 'As senhas não são iguais.';
+
+        const confirmationPasswordError = document.querySelector('#confirmacao_senha + .invalid-feedback');
+
+        confirmationPasswordError.textContent = error;
+
+        form.confirmacao_senha.setCustomValidity(error);
+      }
+    });
+</script>
+</html>
