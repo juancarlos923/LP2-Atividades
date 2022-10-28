@@ -29,9 +29,10 @@ router.post(
   multer(uploadConfig).single('image'),
   celebrate({
     [Segments.BODY]: Joi.object().keys({
-      email: Joi.string().required(),
-      nome: Joi.string().email(),
+      nome: Joi.string().required(),
+      email: Joi.string().email(),
       senha: Joi.string().min(8),
+      confirmacao_senha: Joi.string().valid(Joi.ref('senha')),
     }),
   }),
   async (req, res) => {
@@ -130,6 +131,8 @@ router.use(function (req, res, next) {
     message: 'Content not found',
   });
 });
+
+router.use(errors());
 
 router.use(function (error, req, res, next) {
   console.error(error.stack);
