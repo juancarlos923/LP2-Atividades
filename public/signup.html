@@ -76,7 +76,8 @@
                                 <i class="fa fa-user text-muted"></i>
                             </span>
                         </div>
-                        <input id="nome" type="text" name="nome" placeholder="Nome" class="form-control bg-white border-left-0 border-md">
+                        <input id="nome" required type="text" name="nome" placeholder="Nome" class="form-control bg-white border-left-0 border-md">
+                        <div class="invalid-feedback"></div>
                     </div>
 
                     <!-- Email -->
@@ -86,7 +87,8 @@
                                 <i class="fa fa-envelope text-muted"></i>
                             </span>
                         </div>
-                        <input id="email" type="email" name="email" placeholder="E-mail" class="form-control bg-white border-left-0 border-md">
+                        <input id="email" required type="email" name="email" placeholder="E-mail" class="form-control bg-white border-left-0 border-md">
+                        <div class="invalid-feedback"></div>
                     </div>
                     
                     <!-- Senha -->
@@ -96,12 +98,38 @@
                                 <i class="fa fa-envelope text-muted"></i>
                             </span>
                         </div>
-                        <input id="senha" type="password" name="senha" placeholder="Senha" class="form-control bg-white border-left-0 border-md">
+                        <input id="senha" required type="password" name="senha" minlength="8" placeholder="Senha" class="form-control bg-white border-left-0 border-md">
+                        <div class="invalid-feedback"></div>
+                    </div>
+                    
+                    <!-- Confirmar Senha -->
+                    <div class="input-group col-lg-12 mb-4">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text bg-white px-4 border-md border-right-0">
+                                <i class="fa fa-envelope text-muted"></i>
+                            </span>
+                        </div>
+                        <input id="confirmacao_senha" type="password" name="confirmacao_senha" placeholder="Senha" required class="form-control bg-white border-left-0 border-md">
+                        <div class="invalid-feedback"></div>
+                    </div>
+
+                    <!-- File -->
+                    <div class="input-group col-lg-12 mb-4">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text bg-white border-md border-right-0">
+                                <i class="fa fa-envelope text-muted"></i>
+                            </span>
+                        </div>
+                        <input id="image" type="file" name="image" class="form-control bg-white border-left-0 border-md">
                     </div>
 
                     <!-- Submit Button -->
                     <div class="form-group col-lg-12 mx-auto mb-0">
                         <input class="btn btn-primary btn-block py-2" class="font-weight-bold" type="submit" value="Cadastrar" id="cadastrar" name="cadastrar">
+                    </div>
+
+                    <div class="spinner-border ms-3 d-none" role="status">
+                        <span class="visually-hidden">Loading...</span>
                     </div>
 
                     <!-- Divider Text -->
@@ -138,28 +166,82 @@
 <script>
     const form = document.querySelector('form');
 
+    const emptyErrors = {
+        nome: 'Escolha o nome do usuário.',
+        email: 'Escolha o email do usuário.',
+        senha: 'Escolha a senha do usuário com no mínimo 8 caracteres.',
+        confirmacao_senha: 'Escolha a confirmação de senha do usuário com no mínimo 8 caracteres.',
+    };
+
     form.onsubmit = (event) => {
         event.preventDefault();
 
-        const user = Object.fromEntries(new FormData(form));
-        createUser(user);
+        document.querySelector('.spinner-border').classList.remove('d-none');
         
+        const user = new FormData(form);
+
+        const valid = () => {
+            const inputs = document.querySelectorAll('input');
+
+            const valid = Array.from(inputs).every((input) =>
+                input.checkValidity()
+            );
+            return valid;
+        };
+
+        if (valid() && (createUser(user))) {
+            location.href = '/signin.html';
+        }
+
+        form.classList.add('was-validated');
     };
 
     async function createUser(user) {
-      const url = '/users';
+        const url = '/users';
 
-      const config = {
+        const config = {
         method: 'post',
-        body: JSON.stringify(user),
-        headers: {
-          'Content-Type': 'application/json; charset=UTF-8',
-        },
-      };
-      
-      const newUser = await (await fetch(url, config)).json();
-      location.href = '/signin.html';
-      return
+        body: user
+        };
+        
+        const newUser = await (await fetch(url, config)).json();
+        
+        return newUser
     }
+
+    Array.from(document.querySelectorAll('input + .invalid-feedback')).forEach(
+        (element, index) => {
+            element.textContent = Object.values(emptyErrors)[index];
+        }
+    );
+
+    Array.from(document.querySelectorAll('input')).map((input) => {
+      input.addEventListener('input', () => {
+        input.setCustomValidity('');
+
+        if (input.value === '') {
+          const error = emptyErrors[input.name]
+          input.parentNode.querySelector('.invalid-feedback').innerText =
+            error;
+
+          input.setCustomValidity(error);
+        }
+      });
+    });
+
+    form.confirmacao_senha.addEventListener('input', () => {
+      const password = form.senha.value;
+      const confirmation_password = form.confirmacao_senha.value;
+
+      if (password !== confirmation_password) {
+        const error = 'As senhas não são iguais.';
+
+        const confirmationPasswordError = document.querySelector('#confirmacao_senha + .invalid-feedback');
+
+        confirmationPasswordError.textContent = error;
+
+        form.confirmacao_senha.setCustomValidity(error);
+      }
+    });
 </script>
 </html>
